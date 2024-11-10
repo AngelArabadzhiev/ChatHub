@@ -1,94 +1,101 @@
 import express from 'express';
-import express_ws from "express-ws";
-import bcrypt from "bcrypt";
+import express_ws from 'express-ws';
+import bcrypt from 'bcrypt';
 import {MongoClient} from 'mongodb';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
 const saltRounds = 10;
-const port = 3000;
+const port = process.env.PORT;
 let expressWs = express_ws(app);
-
-const uri = "mongodb://localhost:27017/";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
-
 let global_ws;
 app.use(express.json());
-app.ws("/return-ws", function (ws, req) {
+
+app.ws('/return-ws', function (ws, req) {
     global_ws = ws;
-    ws.on("message", function (msg) {
-        ws.send("I agree");
+    ws.on('message', function (msg) {
+        ws.send('I agree');
     });
 });
-//UserName, password and email
-app.post('/register', function (req, res) {
-    (async () => {
-        const hashedPassword = await hashPassword(req.body.password);
-        insertIntoDB(req.body.username, req.body.email, hashedPassword).catch(console.dir);
-    })();
-    res.send("Post request received");
+
+app.post('/register', async (req, res) => {
+    const {username, email, password} = req.body;
+    try {
+        // Check if username or email already exists in the database
+        const existingUser = await findUserByUsernameOrEmail(username, email);
+        if (existingUser) {
+            return res.status(400).send("Username or email is already taken");
+        }
+
+        const hashedPassword = await hashPassword(password);
+        await insertIntoDB(username, email, hashedPassword);
+        res.send("User registered successfully");
+    } catch (error) {
+        console.error("Registration failed:", error);
+        res.status(500).send("Error registering user");
+    }
 });
 
-//Username and password
-app.post('/login', function (req, res) {
-    let username = req.body.username;
-
-    (async () => {
-        const hashedPassword = await hashAndCompare(req.body.password);
-        if(hashedPassword){
-            searchInDB(username, hashPassword(req.body.password)).catch(console.dir);
-        }
-    })();
-    res.send("Post request received");
-})
-
-async function hashPassword(plainPassword) {
+app.post('/login', async (req, res) => {
+    const {username, password} = req.body;
     try {
-        return await bcrypt.hash(hash, saltRounds);
+        const user = await searchInDB(username);
+        if (user && await bcrypt.compare(password, user.password)) {
+            res.send("Login successful");
+        } else {
+            res.status(401).send("Incorrect username or password");
+        }
+    } catch (error) {
+        console.error("Login failed:", error);
+        res.status(500).send("Error during login");
+    }
+});
+
+async function hashPassword(password) {
+    try {
+        return await bcrypt.hash(password, saltRounds);
     } catch (error) {
         console.error("Error hashing password:", error);
+        throw error;
     }
-}
-
-async function  hashAndCompare(password) {
-    bcrypt.hash(password, saltRounds, (err, hash) => {
-        if (err) {
-            console.error("Error hashing password:", err);
-            return false;
-        }
-        bcrypt.compare(password, hash, (err, result) => {
-            if (err) {
-                console.error("Error comparing password:", err);
-                return false;
-            }
-            if (result) {
-                console.log("Password is correct!");
-                return true;
-            } else {
-                console.log("Incorrect password.");
-                return false;
-            }
-        });
-    });
 }
 
 async function insertIntoDB(username, email, password) {
     try {
+        await client.connect();
         const database = client.db('users');
         const users = database.collection('users');
-        const query = {"username": username, "email": email, "password": password};
-        const user = await users.insertOne(query);
+        const query = {username, email, password};
+        await users.insertOne(query);
     } finally {
         await client.close();
     }
 }
 
-async function searchInDB(username, password) {
+async function searchInDB(username) {
     try {
+        await client.connect();
         const database = client.db('users');
         const users = database.collection('users');
-        const query = {"username": username, "password": password};
+        const query = {username};
+        return await users.findOne(query);
+    } finally {
+        await client.close();
+    }
+}
+
+// Check if user with the same username or email already exists
+async function findUserByUsernameOrEmail(username, email) {
+    try {
+        await client.connect();
+        const database = client.db('users');
+        const users = database.collection('users');
+        const query = {$or: [{username}, {email}]};
         const user = await users.findOne(query);
-        console.log(user.body);
+        return user;
     } finally {
         await client.close();
     }
