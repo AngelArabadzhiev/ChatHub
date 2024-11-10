@@ -24,15 +24,13 @@ app.ws('/return-ws', function (ws, req) {
 app.post('/register', async (req, res) => {
     const {username, email, password} = req.body;
     try {
-        // Check if username or email already exists in the database
         const existingUser = await findUserByUsernameOrEmail(username, email);
         if (existingUser) {
             return res.status(400).send("Username or email is already taken");
         }
-
         const hashedPassword = await hashPassword(password);
         await insertIntoDB(username, email, hashedPassword);
-        res.send("User registered successfully");
+        res.status(201).send('Successfully registered');
     } catch (error) {
         console.error("Registration failed:", error);
         res.status(500).send("Error registering user");
@@ -44,7 +42,7 @@ app.post('/login', async (req, res) => {
     try {
         const user = await searchInDB(username);
         if (user && await bcrypt.compare(password, user.password)) {
-            res.send("Login successful");
+            res.status(200).send("User login successfully");
         } else {
             res.status(401).send("Incorrect username or password");
         }
@@ -86,8 +84,6 @@ async function searchInDB(username) {
         await client.close();
     }
 }
-
-// Check if user with the same username or email already exists
 async function findUserByUsernameOrEmail(username, email) {
     try {
         await client.connect();

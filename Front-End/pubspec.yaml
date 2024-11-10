@@ -43,10 +43,6 @@ dependencies:
       url: https://github.com/ianfrye0818/social_media_buttons
   provider: ^6.1.2
   shared_preferences: ^2.2.3
-  firebase_core: ^3.6.0
-  firebase_auth: ^5.3.1
-  cloud_firestore: ^5.4.4
-  glass: ^2.0.0+1
   auto_size_text: ^3.0.0
 
 dev_dependencies:
@@ -75,7 +71,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/mock_messages.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -6,15 +6,11 @@ import 'package:Chat_App/services/auth_services.dart';
 import 'package:Chat_App/utils/brand_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
   await AuthServices.init();
   runApp(ChangeNotifierProvider(
     create: (BuildContext context) => AuthServices(),

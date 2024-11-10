@@ -44,7 +44,7 @@ class ContactsPage extends StatelessWidget {
                     'Details for contact ${index + 1}',
                     style: TextStyle(color: Colors.grey),
                   ),
-                  leading: ClipRRect(borderRadius: BorderRadius.circular(50),child: Image.asset('assets/images/alien.png', )),
+                  leading: ClipRRect(borderRadius: BorderRadius.circular(50),child: Image.asset('assets/images/blank-icon.jpg', )),
                   onTap: () {
                     // Handle tap on list item
                   },

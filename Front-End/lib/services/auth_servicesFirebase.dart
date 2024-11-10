@@ -2,20 +2,21 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-
-
+// Function to handle user login
 Future<void> loginUser(
     BuildContext context,
     TextEditingController controllerUsername,
-    TextEditingController controllerPassword, GlobalKey<FormState> formKey) async {
+    TextEditingController controllerPassword,
+    GlobalKey<FormState> formKey) async {
+
   if (formKey.currentState != null && formKey.currentState!.validate()) {
-    final url = Uri.parse('http://37.63.57.37:3000/login');
+    final url = Uri.parse('http://192.168.0.115:3000/login'); // Backend URL
     try {
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
-          'userName': controllerUsername.text,
+          'username': controllerUsername.text,
           'password': controllerPassword.text,
         }),
       );
@@ -65,19 +66,22 @@ Future<void> loginUser(
   }
 }
 
-
+// Function to handle user registration
 Future<void> registerUser(
-    BuildContext context,TextEditingController controllerUsername,
+    BuildContext context,
+    TextEditingController controllerUsername,
     TextEditingController controllerEmail,
-    TextEditingController controllerPassword,GlobalKey<FormState> formKey) async {
+    TextEditingController controllerPassword,
+    GlobalKey<FormState> formKey) async {
+
   if (formKey.currentState != null && formKey.currentState!.validate()) {
-    final url = Uri.parse('http://37.63.57.37:3000/register');
+    final url = Uri.parse('http://192.168.0.115:3000/register'); // Backend URL
     try {
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
-          'userName': controllerUsername.text,
+          'username': controllerUsername.text,
           'email': controllerEmail.text,
           'password': controllerPassword.text,
         }),
@@ -85,8 +89,7 @@ Future<void> registerUser(
 
       if (response.statusCode == 201) {
         print('User registered successfully');
-        print(json.decode(response.body));
-        await loginUser(context,controllerUsername, controllerPassword, formKey);
+        await loginUser(context, controllerUsername, controllerPassword, formKey);
       } else {
         final responseBody = json.decode(response.body);
         print('Failed to register user: ${responseBody['error']}');

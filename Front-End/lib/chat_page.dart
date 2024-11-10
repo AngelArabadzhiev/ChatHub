@@ -19,17 +19,17 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   List<ChatMessageEntity> _messages = [];
 
-  _loadMessages() async {
-    rootBundle.loadString("assets/mock_messages.json").then((response) {
-      final List<dynamic> decodedList = jsonDecode(response) as List;
-      final List<ChatMessageEntity> chatMessages = decodedList.map((listItem) {
-        return ChatMessageEntity.fromJSON(listItem);
-      }).toList();
-      setState(() {
-        _messages = chatMessages;
-      });
-    });
-  }
+  // _loadMessages() async {
+  //   rootBundle.loadString("assets/mock_messages.json").then((response) {
+  //     final List<dynamic> decodedList = jsonDecode(response) as List;
+  //     final List<ChatMessageEntity> chatMessages = decodedList.map((listItem) {
+  //       return ChatMessageEntity.fromJSON(listItem);
+  //     }).toList();
+  //     setState(() {
+  //       _messages = chatMessages;
+  //     });
+  //   });
+  // }
 
   onSentMessage(ChatMessageEntity entity) {
     _messages.add(entity);
@@ -38,7 +38,7 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   void initState() {
-    _loadMessages();
+    // _loadMessages();
     super.initState();
   }
 

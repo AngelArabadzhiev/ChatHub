@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bef9bc6f-757b-4dd0-aa40-d4926c27fdc5" name="Changes" comment="First commit">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ChatHub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ChatHub.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Back-End/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/lib/chat_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/lib/chat_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/lib/contacts_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/lib/contacts_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/lib/services/auth_servicesFirebase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/lib/services/auth_servicesFirebase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +28,9 @@
     <option name="groupingKeys">
       <option value="repository" />
     </option>
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
     <excluded-from-favorite>
@@ -48,7 +59,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/AngelArabadzhiev/ChatHub.git&quot;,
-    &quot;accountId&quot;: &quot;3c72688a-49ca-4f14-b2f8-a3240ecb78dd&quot;
+    &quot;accountId&quot;: &quot;fb939b68-d8ea-4fe9-8311-365885b5614e&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -62,24 +73,42 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Flutter.Unnamed.executor": "Run",
     "Node.js.server.js.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "io.flutter.reload.alreadyRun": "true",
     "javascript.nodejs.core.library.configured.version": "22.11.0",
     "javascript.nodejs.core.library.typings.version": "22.9.0",
-    "last_opened_file_path": "C:/Users/Angel/AppData/Roaming/JetBrains/WebStorm2024.2/node/versions/22.11.0/node.exe",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/angel/development/flutter/bin/cache",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "C:/Users/Angel/AppData/Roaming/JetBrains/WebStorm2024.2/node/versions/22.11.0/node",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater",
+    "show.migrate.to.gradle.popup": "false",
     "ts.external.directory.path": "C:\\Users\\Angel\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="FlutterRunConfigurationType" factoryName="Flutter" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/Front-End/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -133,23 +162,5 @@
     </ignored-roots>
     <MESSAGE value="First commit" />
     <option name="LAST_COMMIT_MESSAGE" value="First commit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Back-End/server/server.js</url>
-          <line>87</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Back-End/server/server.js</url>
-          <line>86</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
