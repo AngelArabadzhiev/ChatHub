@@ -25,9 +25,9 @@ ChatHub is a real-time messaging application that allows users to chat with each
      ```bash 
      npm install
      ```
-2. Set up MongoDB:
-    Use either a local MongoDB instance or MongoDB Atlas for cloud hosting.
-    Create a .env file in the backend directory and add the following environment variables:
+2. Set up MongoDB:  
+   &emsp;Use either a local MongoDB instance or MongoDB Atlas for cloud hosting.  
+   &emsp;Create a .env file in the backend directory and add the following environment variables:  
     ```bash
     MONGODB_URI=mongodb://your-mongo-uri
     PORT=3000
